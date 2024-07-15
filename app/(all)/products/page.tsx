@@ -70,13 +70,13 @@ const Page = () => {
       <Image 
         src={'https://gcdnb.pbrd.co/images/rnMVj6taeole.png?o=1'} 
         alt='Fixx' 
-        width= {2040}
-        height={100} 
+        width= {1700}
+        height={70} 
         className="object-cover mb-4"
       />
 
       <div className='flex gap-20 p-10'>
-        <div className='flex flex-col gap-6 md:max-w-md md:hidden'>
+        <div className='flex flex-col gap-6 md:max-w-md'>
           <div className='flex justify-between gap-40'>
             <p className='font-light'>COMPANY</p>
             <CgSelect className='size-6 font-thin'/>

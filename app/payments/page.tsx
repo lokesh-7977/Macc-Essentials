@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPaymentMethod, setAddress, loadStateFromLocalStorage } from '../../redux/paymentslice';
 import { RootState, AppDispatch } from '../../redux/store';
+import Image from 'next/image';
+import Ima from '../../public/images/payments.png';
 interface Address {
     addressLine1: string;
     addressLine2?: string;
@@ -41,13 +43,12 @@ const PaymentPage = () => {
   };
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-2xl font-semibold mb-4">Payment Details</h2>
+    <div className="flex items-center justify-center h-screen p-10">
+      <div className="bg-white p-8 max-w-lg w-full">
+        <h2 className="text-2xl font-semibold mb-4">PAYMENT</h2>
         <form onSubmit={handleSubmit}>
           {/* Payment Options */}
-          <fieldset className="mb-6">
-            <legend className="text-lg font-medium mb-2">Select Payment Method:</legend>
+          <fieldset className="mb-6 border-gray border-2 rounded p-4">
             <div className="space-y-2">
               {['debitCard', 'creditCard', 'paypal', 'bitcoin', 'appleWallet'].map((method) => (
                 <label key={method} className="flex items-center">
@@ -57,7 +58,7 @@ const PaymentPage = () => {
                     value={method}
                     checked={paymentMethod === method}
                     onChange={handlePaymentMethodChange}
-                    className="mr-2"
+                    className="mr-2 border"
                   />
                   {method.charAt(0).toUpperCase() + method.slice(1).replace(/([A-Z])/g, ' $1')}
                 </label>
@@ -75,7 +76,7 @@ const PaymentPage = () => {
                 placeholder="Address Line 1"
                 value={address.addressLine1}
                 onChange={handleAddressChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border"
                 required
               />
               <input
@@ -84,7 +85,7 @@ const PaymentPage = () => {
                 placeholder="Address Line 2 (optional)"
                 value={address.addressLine2 || ''}
                 onChange={handleAddressChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border"
               />
               <input
                 type="text"
@@ -92,7 +93,7 @@ const PaymentPage = () => {
                 placeholder="City"
                 value={address.city}
                 onChange={handleAddressChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border"
                 required
               />
               <input
@@ -101,7 +102,7 @@ const PaymentPage = () => {
                 placeholder="State"
                 value={address.state}
                 onChange={handleAddressChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border"
                 required
               />
               <input
@@ -110,7 +111,7 @@ const PaymentPage = () => {
                 placeholder="Zip Code"
                 value={address.zipCode}
                 onChange={handleAddressChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border"
                 required
               />
             </div>
@@ -118,11 +119,20 @@ const PaymentPage = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+            className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-600"
           >
             Pay
           </button>
         </form>
+      </div>
+      <div className="relative w-600 h-1200">
+      <Image
+          src={Ima}
+          width={400}
+          height={300}
+          alt="payments"
+          className="w-full h-700 object-cover"
+        />
       </div>
     </div>
   );

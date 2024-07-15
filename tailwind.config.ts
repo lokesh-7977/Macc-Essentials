@@ -18,11 +18,7 @@ const config = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
-      },
       colors: {
-        lightGray: '#D2D2D2',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

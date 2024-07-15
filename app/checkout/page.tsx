@@ -4,6 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 import { saveOrder } from '@/redux/orderslice';
 import  Image  from "next/image";
+import Im from '../../public/images/checkout-image.png'
 
 interface FormData {
   firstName: string;
@@ -45,17 +46,11 @@ const CheckoutPage: React.FC = () => {
   };
 
   return (
-    <div className="flex p-6 max-w-4xl mx-auto bg-white shadow-md rounded-lg">
-      <div className="flex-shrink-0 w-1/2">
-        <Image
-          src="" 
-          alt="Checkout"
-          className="w-full h-full object-cover rounded-l-lg"
-        />
-      </div>
+    <div className="flex p-6 max-w-4xl mx-auto bg-white gap-10">
       
       <div className="w-1/2 p-6">
-        <h1 className="text-2xl font-bold mb-4 text-center">Checkout</h1>
+        <h1 className="text-2xl font-bold mb-4">Checkout</h1>
+        <p className='font-bold mb-4'>Delivery Address</p>
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -102,12 +97,21 @@ const CheckoutPage: React.FC = () => {
             />
             <button
               type="submit"
-              className="w-full py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300"
+              className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-800 transition duration-300"
             >
               Save and Continue
             </button>
           </form>
         </FormProvider>
+      </div>
+      <div className="flex-shrink-0 w-1/2">
+        <Image
+          src={Im}
+          width={600}
+          height={350}
+          alt="Checkout"
+          className="w-full h-full object-cover"
+        />
       </div>
     </div>
   );
