@@ -2,6 +2,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card } from '@/app/(home)/newproducts/card';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import WeeklyImg from '../../../public/images/weekly-discounts.png'
 
 interface Product {
   id: string;
@@ -18,7 +21,8 @@ export default function Page() {
         const response = await axios.get('https://real-time-amazon-data.p.rapidapi.com/seller-products?seller_id=A02211013Q5HP3OMSZC7W&country=US&page=1', {
           headers: {
             'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
-            'x-rapidapi-key': 'd93de0bee7msh662b9cdeb6c84d5p1f20a9jsndd3d664e5842'
+            'x-rapidapi-key': 'd8e882a5bcmsh0c5c82cfa9ef49ep1b48d7jsn66bb991bb5cd'
+            // 'x-rapidapi-key': 'd7b0ceb475msh769a5ad34fda6e5p1923fcjsnd752266e88a3'
           }
         });
 
@@ -43,18 +47,27 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="relative flex items-center justify-center h-screen bg-gray-100">
-                <h1>Weekly Offers</h1>
-
-      <div className="flex space-x-4 overflow-hidden">
+    <div className="relative flex items-center justify-center h-screen bg-white gap-10 pr-10">
+      <Image 
+      src={WeeklyImg} 
+      alt="weekly discounts"
+      />
+      <div className="flex flex-col space-x-4 overflow-hidden justify-start gap-20">
+        <div className='flex items-center justify-between'>
+          <h1 className='text-4xl text-center font-bold ml-10'><span className='text-red-600'>MACC</span><span className='text-gray-600'> WEEKLY DISCOUNTS</span></h1>
+          <Button className='bg-gray-300'>VIEW ALL</Button>
+        </div>
+        <div className='flex gap-8'>
         {cards.map((card) => (
           <div
             key={card.id}
             className="transition-transform duration-500 transform scale-100"
           >
             <Card image={card.image} />
+            <h1 className='text-3xl text-center font-medium p-6'>{card.content ? card.content.split(" ")[1] : ''}</h1>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );
