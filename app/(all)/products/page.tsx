@@ -4,11 +4,13 @@ import axios from 'axios';
 import { Card } from '@/app/(home)/newproducts/card';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
+import Link from 'next/link'; 
 import { CgSelect } from 'react-icons/cg';
 
 interface Product {
   id: string;
   image: string;
+  content: string;
 }
 
 const Page = () => {
@@ -23,8 +25,7 @@ const Page = () => {
       const response = await axios.get(`https://real-time-amazon-data.p.rapidapi.com/seller-products?seller_id=A02211013Q5HP3OMSZC7W&country=US&page=${pageNumber}`, {
         headers: {
           'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
-          'x-rapidapi-key': 'd7b0ceb475msh769a5ad34fda6e5p1923fcjsnd752266e88a3'
-          // 'x-rapidapi-key': 'd8e882a5bcmsh0c5c82cfa9ef49ep1b48d7jsn66bb991bb5cd'
+          'x-rapidapi-key': 'db0746436bmshc933250559a46d7p194c8ejsne07f00c7b173' // Replace with your actual API key
         }
       });
 
@@ -97,11 +98,11 @@ const Page = () => {
             </select>
           </div>
           <div className="relative flex flex-col items-center justify-center p-4">
-            {/* <h1 className="text-2xl font-bold mb-4">Best Sellers</h1> */}
-        
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
               {products.map((product) => (
-                <Card key={product.id}  image={product.image} />
+                <Link key={product.id} href={`/products/${product.id}`}>
+                    <Card image={product.image} />
+                </Link>
               ))}
             </div>
 
