@@ -18,7 +18,7 @@ export default function Navbar() {
 
   useEffect(() => {
     window.addEventListener("resize", updateWidth);
-    updateWidth();
+    updateWidth(); // Initial check
     return () => window.removeEventListener("resize", updateWidth);
   }, [updateWidth]);
 
@@ -28,23 +28,23 @@ export default function Navbar() {
         <CiSearch className='text-gray-600 text-2xl' />
       </div>
 
-      <CgMenuRight 
-        className={`text-gray-700 text-2xl md:text-xl hover:text-blue-500 transition duration-300 ${show ? "block" : "hidden"}`}
-      />
-      
+      <div className={`text-gray-700 text-2xl md:text-xl hover:text-blue-500 transition duration-300 ${show ? "block" : "hidden"}`}>
+        <CgMenuRight />
+      </div>
+
       <div className='flex-grow flex justify-center items-center space-x-8 md:space-x-20 ml-4 md:ml-10'>
-        <Link href='/' className='text-gray-700 hover:text-blue-500 transition duration-300'>SHOP</Link>
-        <Link href='/' className='text-gray-700 hover:text-blue-500 transition duration-300'>ESSENTIALS</Link>
+        <Link href='/products' className='text-gray-700 hover:text-blue-500 transition duration-300'>SHOP</Link>
+        <Link href='/products' className='text-gray-700 hover:text-blue-500 transition duration-300'>ESSENTIALS</Link>
         <div className='flex flex-col items-center'>
-          <Link href='/' className='font-monotype-corsiva text-xl md:text-2xl italic transition duration-300 text-red-600'>
+          <Link href='/products' className='font-monotype-corsiva text-xl md:text-2xl italic transition duration-300 text-red-600'>
             Macc
           </Link>
-          <Link href='/' className='font-monotype-corsiva text-xl md:text-2xl italic transition duration-300 text-blue-800'>
+          <Link href='/products' className='font-monotype-corsiva text-xl md:text-2xl italic transition duration-300 text-blue-800'>
             Essentials
           </Link>
         </div>
         <Link href='/' className='text-gray-700 hover:text-blue-500 transition duration-300'>ABOUT US</Link>
-        <Link href='/' className='text-gray-700 hover:text-blue-500 transition duration-300'>BEST SELLERS</Link>
+        <Link href='/products' className='text-gray-700 hover:text-blue-500 transition duration-300'>BEST SELLERS</Link>
       </div>
       
       <div className='flex items-center space-x-4 md:space-x-10'>
