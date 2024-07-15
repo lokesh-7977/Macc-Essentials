@@ -25,7 +25,7 @@ const Page = () => {
       const response = await axios.get(`https://real-time-amazon-data.p.rapidapi.com/seller-products?seller_id=A02211013Q5HP3OMSZC7W&country=US&page=${pageNumber}`, {
         headers: {
           'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
-          'x-rapidapi-key': 'db0746436bmshc933250559a46d7p194c8ejsne07f00c7b173' // Replace with your actual API key
+          'x-rapidapi-key': '74732a0dd0msha08ffddab885698p105dbbjsn6998bcc73b3f'
         }
       });
 
