@@ -1,8 +1,10 @@
 "use client";
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import React , { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../redux/cartslice';
 
 interface Product {
   id: string;
@@ -16,6 +18,7 @@ interface Product {
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -62,22 +65,43 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
     }
   }, [params]);
 
+  const handleAddToCart = () => {
+    if (product) {
+      dispatch(addToCart(product));
+    }
+  };
+
   if (loading) {
-    return <p>Loading...</p>;
+    return <div className="flex items-center justify-center h-screen"><p className="text-lg font-semibold">Loading...</p></div>;
   }
 
   if (!product) {
-    return <p>Product not found.</p>;
+    return <div className="flex items-center justify-center h-screen"><p className="text-lg font-semibold">Product not found.</p></div>;
   }
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold">{product.content}</h1>
-      <Image src={product.image} alt={product.content} width={400} height={400} className="w-full max-w-lg mt-4" />
-      <p className="mt-4">{product.description}</p>
-      <p className="mt-4 text-lg font-semibold">Price: {product.price}</p>
-      <p className="text-gray-500 line-through">Original Price: {product.originalPrice}</p>
-      <h2 className="text-xl font-bold mt-6">About Product</h2>
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold text-center mb-4">{product.content}</h1>
+      <div className="flex flex-col md:flex-row items-center md:items-start">
+        <div className="w-full md:w-1/2 flex justify-center">
+          <Image src={product.image} alt={product.content} width={400} height={400} className="w-full max-w-lg mt-4 rounded-lg shadow-lg" />
+        </div>
+        <div className="w-full md:w-1/2 md:pl-6 mt-6 md:mt-0">
+          <p className="text-lg mt-4">{product.description}</p>
+          <p className="mt-4 text-xl font-semibold">Price: <span className="text-green-500">{product.price}</span></p>
+          <p className="text-gray-500 line-through">Original Price: {product.originalPrice}</p>
+          <h2 className="text-2xl font-bold mt-6">About Product</h2>
+          <ul className="list-disc list-inside mt-2 space-y-1">
+            {product.about.map((item, index) => (
+              <li key={index} className="text-lg">{item}</li>
+            ))}
+          </ul>
+          <div className="flex mt-6 space-x-4">
+            <button onClick={handleAddToCart} className="bg-green-500 text-white py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">Add to Cart</button>
+            <button onClick={() => router.push('/products')} className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 transition duration-300">Back to Products</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
