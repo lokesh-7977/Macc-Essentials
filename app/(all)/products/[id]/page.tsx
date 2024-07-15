@@ -26,20 +26,16 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     const fetchProduct = async (id: string) => {
       try {
-        const response = await axios.get(
-          "https://real-time-amazon-data.p.rapidapi.com/product-details",
-          {
-            params: {
-              asin: id,
-              country: "US",
-            },
-            headers: {
-              "x-rapidapi-host": "real-time-amazon-data.p.rapidapi.com",
-              "x-rapidapi-key":
-                "74732a0dd0msha08ffddab885698p105dbbjsn6998bcc73b3f", // Replace with your actual API key
-            },
-          }
-        );
+        const response = await axios.get('https://real-time-amazon-data.p.rapidapi.com/product-details', {
+          params: {
+            asin: id,
+            country: 'US',
+          },
+          headers: {
+            'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
+            'x-rapidapi-key': '74732a0dd0msha08ffddab885698p105dbbjsn6998bcc73b3f', // Replace with your actual API key
+          },
+        });
 
         console.log("API Response:", response.data);
 
@@ -53,7 +49,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
               productData.product_description || "No description available.",
             price: productData.product_price,
             originalPrice: productData.product_original_price,
-            about: productData.about_product,
+            about: productData.about_product || [],
           });
         } else {
           setProduct(null);
