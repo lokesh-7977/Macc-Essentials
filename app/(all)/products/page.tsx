@@ -26,6 +26,8 @@ const Page = () => {
         headers: {
           'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
           'x-rapidapi-key': 'db0746436bmshc933250559a46d7p194c8ejsne07f00c7b173' // Replace with your actual API key
+          // 'x-rapidapi-key': 'd7b0ceb475msh769a5ad34fda6e5p1923fcjsnd752266e88a3'
+          // 'x-rapidapi-key': 'd8e882a5bcmsh0c5c82cfa9ef49ep1b48d7jsn66bb991bb5cd'
         }
       });
 

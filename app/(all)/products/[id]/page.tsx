@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 interface Product {
   id: string;
@@ -11,7 +12,7 @@ interface Product {
   description: string;
   price: string;
   originalPrice: string;
-  about: string[];
+  about: any;
 }
 
 const ProductDetail = ({ params }: { params: { id: string } }) => {
@@ -71,13 +72,33 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold">{product.content}</h1>
-      <Image src={product.image} alt={product.content} width={400} height={400} className="w-full max-w-lg mt-4" />
-      <p className="mt-4">{product.description}</p>
-      <p className="mt-4 text-lg font-semibold">Price: {product.price}</p>
-      <p className="text-gray-500 line-through">Original Price: {product.originalPrice}</p>
-      <h2 className="text-xl font-bold mt-6">About Product</h2>
+    <div className='flex flex-col gap-10'>
+      <ul>
+        <li>Home /</li>
+        <li>Products /</li>
+        <li>Product</li>
+      </ul>
+      <div className='flex gap-20'>
+        <div className='flex flex-col gap-10'>
+          <Image src={product.image} alt={product.content.split(" ")[1]} className="size-20" />
+          <Image src={product.image} alt={product.content.split(" ")[1]} className="size-20" />
+          <Image src={product.image} alt={product.content.split(" ")[1]} className="size-20" />
+          <Image src={product.image} alt={product.content.split(" ")[1]} className="size-20" />
+        </div>
+        <Image src={product.image} alt={product.content} width={400} height={400} className="w-full max-w-lg mt-4 bg-gray-200" />
+        <div className='flex flex-col'>
+          <h1 className="text-2xl font-bold">{product.content.split(" ")[1]}</h1>
+          <p className="mt-4 text-lg font-semibold text-red-500">{product.price}</p>
+          <div className='flex gap-10'>
+            <Button className='border-gray-200 p-2'>BLACK</Button>
+            <Button className='border-gray-200 p-2'>GOLD</Button>
+            <Button className='border-gray-200 p-2'>APOLLO</Button>
+          </div>
+          <Button className='bg-blue-800 text-white'>ADD TO CART</Button>
+          <p className="mt-4">{product.about}</p>
+
+        </div>
+      </div>
     </div>
   );
 };

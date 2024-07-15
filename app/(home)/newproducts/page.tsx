@@ -76,6 +76,7 @@ export default function Page() {
           >
             <Card 
             image={card.image} />
+            <h1 className='text-3xl text-center font-medium p-6'>{card.content ? card.content.split(" ")[1] : ''}</h1>
           </div>
         ))}
       </div>

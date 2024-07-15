@@ -59,7 +59,7 @@ export default function Page() {
             className="transition-transform duration-500 transform scale-100"
           >
             <Card image={card.image} />
-            <h1 className='text-3xl text-center font-medium p-6'>sample Product</h1>
+            <h1 className='text-3xl text-center font-medium p-6'>product</h1>
           </div>
         ))}
         </div>
