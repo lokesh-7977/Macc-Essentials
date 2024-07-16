@@ -21,8 +21,7 @@ export default function Page() {
         const response = await axios.get('https://real-time-amazon-data.p.rapidapi.com/seller-products?seller_id=A02211013Q5HP3OMSZC7W&country=US&page=1', {
           headers: {
             'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
-            'x-rapidapi-key': 'd8e882a5bcmsh0c5c82cfa9ef49ep1b48d7jsn66bb991bb5cd'
-            // 'x-rapidapi-key': 'd7b0ceb475msh769a5ad34fda6e5p1923fcjsnd752266e88a3'
+            'x-rapidapi-key': '88b0e0e255msh722b0e3e50e7cd5p1128b9jsne820c1d2b771'
           }
         });
 
@@ -63,7 +62,7 @@ export default function Page() {
             key={card.id}
             className="transition-transform duration-500 transform scale-100"
           >
-            <Card image={card.image} />
+            <Card image={card.image} content={''} />
             <h1 className='text-3xl text-center font-medium p-6'>{card.content ? card.content.split(" ")[1] : ''}</h1>
           </div>
         ))}

@@ -25,7 +25,7 @@ const Page = () => {
       const response = await axios.get(`https://real-time-amazon-data.p.rapidapi.com/seller-products?seller_id=A02211013Q5HP3OMSZC7W&country=US&page=${pageNumber}`, {
         headers: {
           'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
-          'x-rapidapi-key': '74732a0dd0msha08ffddab885698p105dbbjsn6998bcc73b3f'
+          'x-rapidapi-key': '88b0e0e255msh722b0e3e50e7cd5p1128b9jsne820c1d2b771'
         }
       });
 
@@ -70,44 +70,49 @@ const Page = () => {
       <Image 
         src={'https://gcdnb.pbrd.co/images/rnMVj6taeole.png?o=1'} 
         alt='Fixx' 
-        width= {1700}
-        height={70} 
-        className="object-cover mb-4"
+        width={2000}
+        height={500}
+        className="w-full object-cover mb-4" 
+        style={{ height: '50vh', width: '100%' }} // Adjusted height to 50% of viewport height
       />
 
-      <div className='flex gap-20 p-10'>
+      <div className='flex flex-col lg:flex-row gap-10 p-4 lg:p-10'>
         <div className='flex flex-col gap-6 md:max-w-md'>
-          <div className='flex justify-between gap-40'>
+          <div className='flex justify-between'>
             <p className='font-light'>COMPANY</p>
             <CgSelect className='size-6 font-thin'/>
-          </div><hr/>
+          </div>
+          <hr/>
           <div className='flex justify-between'>
             <p className='font-light'>PRICE</p>
             <CgSelect className='size-6 font-thin'/>
-          </div><hr/>
+          </div>
+          <hr/>
           <div className='flex justify-between'>
             <p className='font-light'>CATEGORIES</p>
             <CgSelect className='size-6 font-thin'/>
-          </div><hr/>
+          </div>
+          <hr/>
         </div>
-        <div className='flex flex-col justify-start gap-10'>
-          <div className='flex justify-between items-start gap-40 p-4'>
+
+        <div className='flex flex-col justify-start gap-10 w-full'>
+          <div className='flex justify-between items-start gap-4 p-2'>
             <h1>{products.length} Products</h1>
             <select className='font-light border-neutral-500 border-2 p-2'>
               <option className='pr-80'>SORT</option>
             </select>
           </div>
           <div className="relative flex flex-col items-center justify-center p-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
               {products.map((product) => (
                 <Link key={product.id} href={`/products/${product.id}`}>
-                    <Card image={product.image} />
+                  <Card image={product.image} content={product.content} /> {/* Display product title */}
                 </Link>
               ))}
             </div>
 
             {loading && <p className="mt-4">Loading...</p>}
-              <div ref={loaderRef} />
+            <div ref={loaderRef} />
           </div>
         </div>
       </div>

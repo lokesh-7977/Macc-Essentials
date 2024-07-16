@@ -45,7 +45,6 @@ const PaymentPage = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Check if all required fields are filled
     if (
       paymentMethod &&
       address.addressLine1 &&
@@ -94,7 +93,6 @@ const PaymentPage = () => {
                 </tbody>
               </table>
             </fieldset>
-            {/* Delivery Address */}
             <fieldset className="mb-6">
               <legend className="text-lg font-medium mb-2">Delivery Address:</legend>
               <div className="space-y-4">

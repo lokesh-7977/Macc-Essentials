@@ -42,7 +42,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
           },
           headers: {
             'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
-            'x-rapidapi-key': '74732a0dd0msha08ffddab885698p105dbbjsn6998bcc73b3f', // Replace with your actual API key
+            'x-rapidapi-key': '88b0e0e255msh722b0e3e50e7cd5p1128b9jsne820c1d2b771', 
           },
         });
 
@@ -94,7 +94,7 @@ const ProductDetail = ({ params }: { params: { id: string } }) => {
 
   const handleCloseNotification = () => {
     setShowNotification(false);
-    router.push('/cart'); // Navigate to the cart page
+    router.push('/checkout');
   };
 
   if (loading) {
