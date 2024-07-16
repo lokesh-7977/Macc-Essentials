@@ -107,14 +107,6 @@ const PaymentPage = () => {
                 />
                 <input
                   type="text"
-                  name="addressLine2"
-                  placeholder="Address Line 2 (optional)"
-                  value={address.addressLine2 || ''}
-                  onChange={handleAddressChange}
-                  className="w-full p-2 border"
-                />
-                <input
-                  type="text"
                   name="city"
                   placeholder="City"
                   value={address.city}
@@ -166,10 +158,11 @@ const PaymentPage = () => {
       <Footer />
       <Modal
         show={showModal}
-        onClose={() => setShowModal(false)}
+
         message="Your Order Has Been Placed Successfully"
-        imageUrl="https://s3-alpha-sig.figma.com/img/5d8c/c585/7dda1f9cce2a47ba0daf6a6e5785c931?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IB3DDM4vjUkUPX5RH12HP48cVsT2wGuNspok-dYDo8G-uCwGDK1opEOT9DOYxivClSI0LmGfKMKo2FXp~PowW3aDKyYTgbqdgMquufVV00tBd0-nDa3Tw85GHnxzCH0xX~T2h8~SyULgZ3n5sv4asvHptiBvqgfGmYxdH9LybUTPxIeMEe0FFBYOkAIZFcp5PTVJ47nuGcbtS-zAuEECWsEX~bKAahPUnQCpYTkfJGV601fFLWLTVpXnis-7Se7sH~KKfflAWMctIWyIJmF8gllF~5EC4P5PJsfa16vreJwHZiOdTZrgPKW2nccRK82IitqzA1M~JWzc~BRFV3FD-w__"
-      />
+        imageUrl="https://s3-alpha-sig.figma.com/img/5d8c/c585/7dda1f9cce2a47ba0daf6a6e5785c931?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IB3DDM4vjUkUPX5RH12HP48cVsT2wGuNspok-dYDo8G-uCwGDK1opEOT9DOYxivClSI0LmGfKMKo2FXp~PowW3aDKyYTgbqdgMquufVV00tBd0-nDa3Tw85GHnxzCH0xX~T2h8~SyULgZ3n5sv4asvHptiBvqgfGmYxdH9LybUTPxIeMEe0FFBYOkAIZFcp5PTVJ47nuGcbtS-zAuEECWsEX~bKAahPUnQCpYTkfJGV601fFLWLTVpXnis-7Se7sH~KKfflAWMctIWyIJmF8gllF~5EC4P5PJsfa16vreJwHZiOdTZrgPKW2nccRK82IitqzA1M~JWzc~BRFV3FD-w__" onClose={function (): '/' {
+        throw new Error('Function not implemented.');
+        } }      />
     </>
   );
 };
